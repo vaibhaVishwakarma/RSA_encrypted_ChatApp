@@ -6,9 +6,18 @@ import SignUp from "./pages/signup/SignUp";
 import { Toaster } from "react-hot-toast";
 
 function App() {
-  const { authUser } = useAuthContext();
+  const { authUser, authReady } = useAuthContext();
+
+  if (!authReady) {
+    return (
+      <div className="min-h-[100dvh] flex items-center justify-center">
+        <span className="loading loading-spinner loading-lg text-sky-500" />
+      </div>
+    );
+  }
+
   return (
-    <div className="p-4 h-screen flex items-center justify-center">
+    <div className="p-2 sm:p-4 min-h-[100dvh] h-screen flex items-center justify-center overflow-hidden">
       <Routes>
         <Route
           path="/"

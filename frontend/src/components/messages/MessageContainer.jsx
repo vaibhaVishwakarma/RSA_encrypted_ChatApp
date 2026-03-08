@@ -4,21 +4,32 @@ import Messages from "./Messages";
 import MessageInput from "./MessageInput";
 import { useAuthContext } from "../../context/AuthContext";
 import { TiMessages } from "react-icons/ti";
+import { IoChevronBack } from "react-icons/io5";
 
-const MessageContainer = () => {
+const MessageContainer = ({ showBackButton }) => {
   const { selectedConversation, setSelectedConversation } = useConversation();
   useEffect(() => {
     return () => setSelectedConversation(null);
   }, [setSelectedConversation]);
 
   return (
-    <div className="md:min-w-[450px] flex flex-col">
+    <div className="md:min-w-[450px] flex flex-col flex-1 min-h-0">
       {!selectedConversation ? (
         <NoChatSelected />
       ) : (
         <>
-          <div className="bg-slate-500 px-4 py-2 mb-2">
-            <span className="font-bold">{selectedConversation.fullName}</span>
+          <div className="bg-slate-500 px-4 py-2 mb-2 flex items-center gap-2 shrink-0">
+            {showBackButton && (
+              <button
+                type="button"
+                onClick={() => setSelectedConversation(null)}
+                className="p-1 -ml-1 rounded-lg hover:bg-slate-600 transition-colors touch-manipulation"
+                aria-label="Back to conversations"
+              >
+                <IoChevronBack className="w-6 h-6 text-white" />
+              </button>
+            )}
+            <span className="font-bold truncate">{selectedConversation.fullName}</span>
           </div>
           <Messages />
           <MessageInput />

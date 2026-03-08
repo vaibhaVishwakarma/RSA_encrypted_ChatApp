@@ -1,25 +1,26 @@
 import { useAuthContext } from "../../context/AuthContext";
 import useConversation from "../../zustand/useConversation";
 import { extractTime } from "../../utils/extractTime";
+import Avatar from "../Avatar";
 
 const Message = ({ message }) => {
   const { authUser } = useAuthContext();
   const { selectedConversation } = useConversation();
   const fromMe = message.senderId === authUser._id;
   const chatClassName = fromMe ? "chat-end" : "chat-start";
-  const profilePic = fromMe
-    ? authUser.profilePic
-    : selectedConversation?.profilePic;
+  const user = fromMe ? authUser : selectedConversation;
   const formattedTime = extractTime(message.createdAt);
   const bubbleBgColor = fromMe ? "bg-sky-500" : "";
   const shakeClass = message.shouldShake ? "shake" : "";
 
   return (
     <div className={`chat ${chatClassName}`}>
-      <div className="chat-image avatar">
-        <div className="w-10 rounded-full">
-          <img alt="Tailwind CSS chat bubble component" src={profilePic} />
-        </div>
+      <div className="chat-image">
+        <Avatar
+          fullName={user?.fullName}
+          profilePic={user?.profilePic}
+          size="w-10"
+        />
       </div>
       <div
         className={`chat-bubble text-white ${bubbleBgColor} ${shakeClass} pb-2 maxWidth`}

@@ -1,5 +1,6 @@
 import useConversation from "../../zustand/useConversation";
 import { useSocketContext } from "../../context/SocketContext";
+import Avatar from "../Avatar";
 
 const Conversation = ({ conversation, lastIdx, emoji }) => {
   const { selectedConversation, setSelectedConversation } = useConversation();
@@ -15,11 +16,12 @@ const Conversation = ({ conversation, lastIdx, emoji }) => {
 			`}
         onClick={() => setSelectedConversation(conversation)}
       >
-        <div className={`avatar ${isOnline ? "online" : ""}`}>
-          <div className="w-12 rounded-full">
-            <img src={conversation.profilePic} alt="user avatar" />
-          </div>
-        </div>
+        <Avatar
+          fullName={conversation.fullName}
+          profilePic={conversation.profilePic}
+          size="w-12"
+          online={isOnline}
+        />
 
         <div className="flex flex-col flex-1">
           <div className="flex gap-3 justify-between">

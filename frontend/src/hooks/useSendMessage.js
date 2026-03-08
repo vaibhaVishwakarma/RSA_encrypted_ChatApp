@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useConversation from "../zustand/useConversation";
 import toast from "react-hot-toast";
+import { authFetch } from "../utils/api";
 
 const useSendMessage = () => {
   const [loading, setLoading] = useState(false);
@@ -8,13 +9,10 @@ const useSendMessage = () => {
   const sendMessage = async (message) => {
     setLoading(true);
     try {
-      const res = await fetch(
+      const res = await authFetch(
         `/api/messages/send/${selectedConversation._id}`,
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
           body: JSON.stringify({ message }),
         }
       );

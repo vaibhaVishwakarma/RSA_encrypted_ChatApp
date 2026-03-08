@@ -1,9 +1,16 @@
 import jwt from "jsonwebtoken";
-import User from "../models/user.model.js";
+import * as userService from "../services/user.service.js";
 
 const protectRoute = async (req, res, next) => {
   try {
-    const token = req.cookies.jwt;
+    // Support cookie, Authorization header, and X-Auth-Token (mobile proxies may strip Authorization)
+    let token = req.cookies.jwt;
+    if (!token && req.headers.authorization?.startsWith("Bearer ")) {
+      token = req.headers.authorization.split(" ")[1];
+    }
+    if (!token && req.headers["x-auth-token"]) {
+      token = req.headers["x-auth-token"];
+    }
     if (!token) {
       return res
         .status(401)
@@ -13,11 +20,12 @@ const protectRoute = async (req, res, next) => {
     if (!decoded) {
       return res.status(401).json({ error: "Unauthorized - Invalid Token" });
     }
-    const user = await User.findById(decoded.userId).select("-password");
+    const user = await userService.findUserById(decoded.userId);
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
-    req.user = user;
+    const { password, ...userWithoutPassword } = user;
+    req.user = userWithoutPassword;
     next();
   } catch (error) {
     console.log("Error in protectRoute middleware: ", error.message);
