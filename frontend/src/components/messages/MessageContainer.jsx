@@ -33,10 +33,10 @@ const MessageContainer = () => {
               <button
                 type="button"
                 onClick={() => setSelectedConversation(null)}
-                className="p-1 -ml-1 rounded-lg hover:bg-slate-600 transition-colors touch-manipulation"
+                className="p-1 -ml-1 rounded-lg hover:bg-slate-200 transition-colors touch-manipulation"
                 aria-label="Back to conversations"
               >
-                <IoChevronBack className="w-6 h-6 text-white" />
+                <IoChevronBack className="w-6 h-6 text-slate-700" />
               </button>
             )}
             <span className="font-bold truncate">{selectedConversation.fullName}</span>
@@ -59,10 +59,10 @@ const NoChatSelected = () => {
   const { authUser } = useAuthContext();
   return (
     <div className="flex items-center justify-center w-full h-full">
-      <div className="px-4 text-center sm:text-lg md:text-xl text-gray-200 font-semibold flex flex-col items-center gap-2">
+      <div className="px-4 text-center sm:text-lg md:text-xl text-slate-700 font-semibold flex flex-col items-center gap-2">
         <p>Welcome {authUser.fullName} 👋</p>
-        <p>Select a chat to start messaging</p>
-        <TiMessages className="text-3xl md:text-6xl text-center" />
+        <p className="text-muted">Select a chat to start messaging</p>
+        <TiMessages className="text-3xl md:text-6xl text-center text-accent" />
       </div>
     </div>
   );

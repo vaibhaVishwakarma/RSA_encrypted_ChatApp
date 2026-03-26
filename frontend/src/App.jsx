@@ -12,7 +12,7 @@ function App() {
   if (!authReady) {
     return (
       <div className="min-h-[100dvh] flex items-center justify-center">
-        <span className="loading loading-spinner loading-lg text-sky-500" />
+        <span className="loading loading-spinner loading-lg text-accent" />
       </div>
     );
   }
@@ -38,7 +38,16 @@ function App() {
           element={authUser ? <Navigate to="/" /> : <SignUp />}
         />
       </Routes>
-      <Toaster />
+      <Toaster
+        toastOptions={{
+          style: {
+            background: "rgba(255,255,255,0.92)",
+            color: "#1f2937",
+            border: "1px solid rgba(255,255,255,0.45)",
+            boxShadow: "0 10px 30px rgba(15,23,42,0.08)",
+          },
+        }}
+      />
     </div>
   );
 }

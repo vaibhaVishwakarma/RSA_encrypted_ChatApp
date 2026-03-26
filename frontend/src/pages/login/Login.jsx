@@ -32,34 +32,34 @@ const Login = () => {
             />
           </span>
         </h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="mt-4 space-y-2">
           <div>
             <label className="label p-2">
-              <span className="text-base label-text">Username</span>
+              <span className="text-base font-medium text-slate-700">Username</span>
             </label>
             <input
               type="text"
               placeholder="Enter username"
-              className="w-full input input-bordered h-10"
+              className="w-full input h-10 rounded-xl light-input"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
           <div>
             <label className="label">
-              <span className="text-base label-text">Password</span>
+              <span className="text-base font-medium text-slate-700">Password</span>
             </label>
             <input
               type="password"
               placeholder="Enter Password"
-              className="w-full input input-bordered h-10"
+              className="w-full input h-10 rounded-xl light-input"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <Link
             to="/signup"
-            className="text-sm  hover:underline mt-2 inline-block"
+            className="text-sm text-slate-600 hover:text-slate-800 hover:underline mt-2 inline-block"
           >
             {"Don't"} have an account?
           </Link>
@@ -69,7 +69,7 @@ const Login = () => {
           <div class="centerMyButton">
 >>>>>>> 6674c8e (project)
             <button
-              className="btn btn-sm mt-2 textColor btnHover"
+              className="btn btn-sm mt-2 primary-btn rounded-xl px-6"
               disabled={loading}
             >
               {loading ? (

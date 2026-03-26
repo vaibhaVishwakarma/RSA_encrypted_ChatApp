@@ -43,7 +43,7 @@ const MessageInput = () => {
   }, [message]);
 
   return (
-    <form className="px-4 my-3" onSubmit={handleSubmit}>
+    <form className="px-4 py-3 mt-auto glass-surface border-t border-white/50" onSubmit={handleSubmit}>
       <div className="w-full relative">
         <textarea
           ref={textareaRef}
@@ -59,7 +59,7 @@ const MessageInput = () => {
         />
         <button
           type="submit"
-          className="absolute inset-y-0 end-0 flex items-center pe-3"
+          className="absolute inset-y-0 end-0 flex items-center pe-3 text-accent"
         >
           {loading ? (
             <div className="loading loading-spinner"></div>

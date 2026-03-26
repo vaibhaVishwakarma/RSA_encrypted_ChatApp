@@ -11,8 +11,8 @@ const Avatar = ({ fullName, profilePic, size = "w-10", className = "", online })
     : profilePic;
 
   return (
-    <div className={`avatar ${online ? "online" : ""} ${className}`}>
-      <div className={`${size} rounded-full`}>
+    <div className={`avatar avatar-glow ${online ? "online" : ""} ${className}`}>
+      <div className={`${size} rounded-full ring-2 ring-white/70 shadow-sm`}>
         <img
           src={url}
           alt={fullName || "avatar"}

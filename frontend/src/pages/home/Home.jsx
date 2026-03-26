@@ -10,16 +10,16 @@ const Home = () => {
   const showChatOnMobile = !!selectedConversation;
 
   return (
-    <div className="w-full h-full max-h-[100dvh] sm:max-h-[100vh] flex items-center justify-center p-2 sm:p-4">
-      <div className="flex w-full h-full sm:h-[550px] md:h-[600px] max-h-[calc(100dvh-2rem)] sm:max-h-[calc(100vh-2rem)] rounded-lg overflow-hidden bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0 shadow-xl">
+    <div className="w-full h-full max-h-[100dvh] sm:max-h-[100vh] flex items-center justify-center p-1 sm:p-2">
+      <div className="chat-shell flex w-full h-full sm:h-[560px] md:h-[620px] max-h-[calc(100dvh-1rem)] sm:max-h-[calc(100vh-1rem)]">
         {/* Sidebar - hidden on mobile when chat is open */}
         <div
           className={`
             ${showChatOnMobile ? "hidden sm:flex" : "flex"}
             sm:min-w-[280px] md:min-w-[320px] w-full sm:w-auto
-            flex-col border-r border-slate-500
+            flex-col border-r border-white/40
             absolute sm:relative inset-0 z-20 sm:z-auto
-            bg-[rgba(0,0,0,0.85)] sm:bg-transparent
+            bg-[rgba(255,255,255,0.9)] sm:bg-transparent
           `}
         >
           <Sidebar />

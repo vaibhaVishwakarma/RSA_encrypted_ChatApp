@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg: #f4f7fb;
+  --surface: rgba(255, 255, 255, 0.55);
+  --surface-strong: rgba(255, 255, 255, 0.78);
+  --border: rgba(255, 255, 255, 0.45);
+  --text-primary: #1f2937;
+  --text-secondary: #64748b;
+  --accent: #60a5fa;
+  --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
 body {
 <<<<<<< HEAD
   /* Dark gradient background - works on all devices, no image needed */
@@ -28,10 +39,7 @@ body {
 
 .RSALogo {
   display: inline-block;
-}
-
-.customDivider {
-  margin-bottom: 0rem;
+  vertical-align: middle;
 }
 
 <<<<<<< HEAD
@@ -49,81 +57,97 @@ form p {
   background-color: rgba(0, 0, 0, 0.65);
 }
 
-.text-blue-500 {
-  color: rgb(22 213 251);
+.text-muted {
+  color: var(--text-secondary);
 }
 
-.border {
-  border-width: 1.5px;
+.text-accent {
+  color: var(--accent);
 }
 
-.label-text,
-a,
-a:hover,
-h1 {
+.light-input {
+  color: var(--text-primary);
+  border: 1px solid rgba(203, 213, 225, 0.9);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.light-input::placeholder {
+  color: #94a3b8;
+}
+
+.light-input:focus {
+  outline: none;
+  border-color: rgba(96, 165, 250, 0.8);
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.16);
+}
+
+.primary-btn {
+  border: none;
   color: white;
+  background: linear-gradient(135deg, #60a5fa, #3b82f6);
 }
 
-.centerMyButton {
-  display: flex;
-  justify-content: center;
+.primary-btn:hover {
+  filter: brightness(0.97);
 }
 
-.textColor {
-  color: white;
+.chat-shell {
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow-soft);
 }
 
-.text-gray-200 {
-  color: rgb(255 255 255);
+.chat-list-item {
+  border-radius: 12px;
+  transition: all 0.18s ease-in-out;
 }
 
-.bg-500 {
-  --tw-bg-opacity: 1;
-  background-color: oklch(0.253267 0.015896 252.417568 / 1);
+.chat-list-item:hover {
+  background: rgba(148, 163, 184, 0.14);
 }
 
-.border-slate-500 {
-  border-color: white;
+.chat-list-item.active {
+  background: rgba(96, 165, 250, 0.24);
 }
 
-.customDimension {
-  height: 2.6rem;
+.message-bubble {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
 }
 
-.bg-slate-500 {
-  background-color: oklch(0.313815 0.021108 254.139175 / 1);
+.message-bubble.from-me {
+  color: #0f172a;
+  background: rgba(191, 219, 254, 0.78);
+  border-color: rgba(147, 197, 253, 0.9);
 }
 
-.w-full-custom {
-  width: 92%;
+.avatar-glow img {
+  transition: transform 0.18s ease-in-out;
 }
 
-.textColorSearch {
-  color: oklch(0.65 0.02 269.06);
+.avatar-glow:hover img {
+  transform: scale(1.04);
 }
 
-.pe-3 {
-  padding-inline-start: 0.75rem;
-  padding-inline-end: 0.25rem;
-}
-
-/* dark mode looking scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgb(42 50 60);
-  border-radius: 5px;
+  background: rgba(148, 163, 184, 0.2);
+  border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(14 165 233);
-  border-radius: 5px;
-  cursor: pointer;
+  background: rgba(96, 165, 250, 0.7);
+  border-radius: 8px;
 }
 
-/* SHAKE ANIMATION ON HORIZONTAL DIRECTION */
 .shake {
   animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) 0.2s both;
   transform: translate3d(0, 0, 0);
@@ -167,7 +191,9 @@ h1 {
 <<<<<<< HEAD
 /* Touch-friendly tap targets on mobile */
 @media (pointer: coarse) {
-  button, a, [role="button"] {
+  button,
+  a,
+  [role="button"] {
     min-height: 44px;
     min-width: 44px;
 =======
