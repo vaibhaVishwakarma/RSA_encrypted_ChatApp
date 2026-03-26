@@ -1,4 +1,5 @@
 const AUTH_KEY = "chat-auth";
+const API_BASE = (import.meta.env.VITE_API_URL || "").replace(/\/$/, "");
 
 const safeGet = (key) => {
   try {
@@ -67,6 +68,11 @@ export const clearAuth = () => {
   safeRemove("chat-user");
 };
 
+export const apiUrl = (path) => {
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  return API_BASE ? `${API_BASE}${normalized}` : normalized;
+};
+
 export const getAuthHeaders = () => {
   const token = getToken();
   const headers = { "Content-Type": "application/json" };
@@ -85,7 +91,7 @@ export const authFetch = async (url, options = {}) => {
     headers["X-Auth-Token"] = token;
   }
 
-  const res = await fetch(url, {
+  const res = await fetch(apiUrl(url), {
     ...options,
     credentials: "include",
     headers,

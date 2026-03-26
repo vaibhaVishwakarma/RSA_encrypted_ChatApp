@@ -17,6 +17,9 @@ MERN Chat App RSA Encryption uses a number of open source projects to work prope
 # Installation
 MERN Chat App RSA Encryption application requires [Node.js](https://nodejs.org/) to run.
 
+## Deployment
+- GitHub deployment guide: [DEPLOY_GITHUB.md](./DEPLOY_GITHUB.md)
+
 ### Clone the repositories
 ```sh
 $ git clone https://github.com/catalyn98/MERN-Chat-App-RSA-Encryption.git
