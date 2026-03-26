@@ -6,6 +6,7 @@ import SignUp from "./pages/signup/SignUp";
 import { Toaster } from "react-hot-toast";
 
 function App() {
+<<<<<<< HEAD
   const { authUser, authReady } = useAuthContext();
 
   if (!authReady) {
@@ -18,6 +19,11 @@ function App() {
 
   return (
     <div className="p-2 sm:p-4 min-h-[100dvh] h-screen flex items-center justify-center overflow-hidden">
+=======
+  const { authUser } = useAuthContext();
+  return (
+    <div className="p-4 h-screen flex items-center justify-center">
+>>>>>>> 6674c8e (project)
       <Routes>
         <Route
           path="/"
