@@ -1,10 +1,7 @@
 import { useState } from "react";
 import { useAuthContext } from "../context/AuthContext";
 import toast from "react-hot-toast";
-<<<<<<< HEAD
 import { apiUrl, setAuth } from "../utils/api";
-=======
->>>>>>> 6674c8e (project)
 
 const useSignup = () => {
   const [loading, setLoading] = useState(false);
@@ -26,16 +23,10 @@ const useSignup = () => {
     if (!success) return;
     setLoading(true);
     try {
-<<<<<<< HEAD
       const res = await fetch(apiUrl("/api/auth/signup"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
-=======
-      const res = await fetch("/api/auth/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
->>>>>>> 6674c8e (project)
         body: JSON.stringify({
           fullName,
           username,
@@ -48,15 +39,10 @@ const useSignup = () => {
       if (data.error) {
         throw new Error(data.error);
       }
-<<<<<<< HEAD
       const { token, ...user } = data;
       if (!token) throw new Error("Signup failed - no token received");
       setAuth(user, token);
       setAuthUser(user);
-=======
-      localStorage.setItem("chat-user", JSON.stringify(data));
-      setAuthUser(data);
->>>>>>> 6674c8e (project)
     } catch (error) {
       toast.error(error.message);
     } finally {

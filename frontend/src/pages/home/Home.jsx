@@ -1,6 +1,5 @@
 import Sidebar from "../../components/sidebar/Sidebar";
 import MessageContainer from "../../components/messages/MessageContainer";
-<<<<<<< HEAD
 import useConversation from "../../zustand/useConversation";
 
 const Home = () => {
@@ -35,26 +34,8 @@ const Home = () => {
         >
           <MessageContainer showBackButton={showChatOnMobile} />
         </div>
-=======
-
-const Home = () => {
-  return (
-    <div>
-      <div className="flex sm:h-[450px] md:h-[550px] rounded-lg overflow-hidden bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0 container">
-        <Sidebar />
-        <MessageContainer />
-      </div>
-      <div className="responsive-message">
-        For now, the application can be used on devices with screens larger than
-        640 pixels. Please use a different device or enlarge the window to
-        access the application.
->>>>>>> 6674c8e (project)
       </div>
     </div>
   );
 };
-<<<<<<< HEAD
-
-=======
->>>>>>> 6674c8e (project)
 export default Home;

@@ -12,11 +12,7 @@ const Login = () => {
   };
 
   return (
-<<<<<<< HEAD
     <div className="flex flex-col items-center justify-center w-full max-w-md min-w-0 px-4 mx-auto">
-=======
-    <div className="flex flex-col items-center justify-center min-w-96 mx-auto">
->>>>>>> 6674c8e (project)
       <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
         <h1 className="text-3xl font-semibold text-center">
           Login
@@ -63,11 +59,7 @@ const Login = () => {
           >
             {"Don't"} have an account?
           </Link>
-<<<<<<< HEAD
           <div className="centerMyButton">
-=======
-          <div class="centerMyButton">
->>>>>>> 6674c8e (project)
             <button
               className="btn btn-sm mt-2 primary-btn rounded-xl px-6"
               disabled={loading}
@@ -79,10 +71,7 @@ const Login = () => {
               )}
             </button>
           </div>
-<<<<<<< HEAD
           <p>Chat End-to-End Encrypted. Powered by RSA-2048</p>
-=======
->>>>>>> 6674c8e (project)
         </form>
       </div>
     </div>

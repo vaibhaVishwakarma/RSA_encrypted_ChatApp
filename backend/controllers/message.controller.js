@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import * as conversationService from "../services/conversation.service.js";
 import * as messageService from "../services/message.service.js";
 import { performance } from "perf_hooks";
@@ -42,19 +41,12 @@ function getCPUUsage(startUsage) {
 async function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
-=======
-import Conversation from "../models/conversation.model.js";
-import Message from "../models/message.model.js";
-import { performance } from "perf_hooks";
-import { getReceiverSocketId, io } from "../socket/socket.js";
->>>>>>> 6674c8e (project)
 
 export const sendMessage = async (req, res) => {
   try {
     const { message } = req.body;
     const { id: receiverId } = req.params;
     const senderId = req.user._id;
-<<<<<<< HEAD
 
     const conversation = await conversationService.getOrCreateConversation(
       senderId,
@@ -133,59 +125,6 @@ export const sendMessage = async (req, res) => {
       io.to(receiverSocketId).emit("newMessage", responseMessage);
     }
     res.status(201).json(responseMessage);
-=======
-    let conversation = await Conversation.findOne({
-      participants: { $all: [senderId, receiverId] },
-    });
-    if (!conversation) {
-      conversation = await Conversation.create({
-        participants: [senderId, receiverId],
-      });
-    }
-    // Generați cheile RSA
-    const rsaKeys = Message.generateRSAKeys();
-    const newMessage = new Message({
-      senderId,
-      receiverId,
-      message,
-      publicKey: rsaKeys.publicKey,
-      privateKey: rsaKeys.privateKey,
-    });
-    // Începutul măsurării timpului pentru criptarea mesajului
-    const startEncrypt = performance.now();
-    // Criptează mesajul înainte de salvare
-    newMessage.encryptMessage();
-    // Sfârșitul măsurării timpului pentru criptarea mesajului
-    const endEncrypt = performance.now();
-    console.log(
-      `Timpul necesar pentru criptarea mesajului: ${
-        endEncrypt - startEncrypt
-      }ms`
-    );
-    if (newMessage) {
-      conversation.messages.push(newMessage._id);
-    }
-    await Promise.all([conversation.save(), newMessage.save()]);
-    // Începutul măsurării timpului pentru decriptarea mesajului
-    const startDecrypt = performance.now();
-    // Decriptează mesajul pentru a-l trimite prin socket
-    newMessage.decryptMessage();
-    // Sfârșitul măsurării timpului pentru decriptarea mesajului
-    const endDecrypt = performance.now();
-    console.log(
-      `Timpul necesar pentru decriptarea mesajului: ${
-        endDecrypt - startDecrypt
-      }ms`
-    );
-    console.log(
-      "_________________________________________________________________________"
-    );
-    const receiverSocketId = getReceiverSocketId(receiverId);
-    if (receiverSocketId) {
-      io.to(receiverSocketId).emit("newMessage", newMessage);
-    }
-    res.status(201).json(newMessage);
->>>>>>> 6674c8e (project)
   } catch (error) {
     console.log("Error in sendMessage controller: ", error.message);
     res.status(500).json({ error: "Internal server error" });
@@ -196,7 +135,6 @@ export const getMessages = async (req, res) => {
   try {
     const { id: userToChatId } = req.params;
     const senderId = req.user._id;
-<<<<<<< HEAD
 
     const conversation = await conversationService.findConversationByParticipants(
       senderId,
@@ -218,18 +156,6 @@ export const getMessages = async (req, res) => {
     }));
 
     res.status(200).json(decryptedMessages);
-=======
-    const conversation = await Conversation.findOne({
-      participants: { $all: [senderId, userToChatId] },
-    }).populate("messages");
-    if (!conversation) return res.status(200).json([]);
-    const messages = conversation.messages.map((message) => {
-      // Decriptează fiecare mesaj înainte de a-l returna
-      message.decryptMessage();
-      return message;
-    });
-    res.status(200).json(messages);
->>>>>>> 6674c8e (project)
   } catch (error) {
     console.log("Error in getMessages controller: ", error.message);
     res.status(500).json({ error: "Internal server error" });

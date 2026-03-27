@@ -2,11 +2,7 @@
   MERN Chat App RSA Encryption
 </h1>
 <p align="center">
-<<<<<<< HEAD
   ReactJS, NodeJS, ExpressJS, Firebase Firestore, RSA Encryption
-=======
-  ReactJS, NodeJS, ExpressJS, MongoDB, RSA Encryption
->>>>>>> 6674c8e (project)
 </p>
 
 <img align="center" src="https://firebasestorage.googleapis.com/v0/b/licenseproject-c2773.appspot.com/o/mern.png?alt=media&token=3ec9ebdd-6476-4ae2-b172-7fcb635c072d" />
@@ -16,21 +12,14 @@ MERN Chat App RSA Encryption uses a number of open source projects to work prope
 * [ReactJS](https://reactjs.org/) - a JavaScript library for building user interfaces.
 * [NodeJS](https://nodejs.org/) - is an open-source, server-side JavaScript runtime environment that allows you to run JavaScript code on the server.
 * [ExpressJS](https://expressjs.com/) - is a popular web application framework for Node.js. It provides a set of features and tools that simplify the process of building web applications and APIs.
-<<<<<<< HEAD
 * [Firebase Firestore](https://firebase.google.com/docs/firestore) - a flexible, scalable NoSQL cloud database used to store the application data.
-=======
-* [MongoDB](https://www.mongodb.com/) - a document-oriented, No-SQL database used to store the application data.
->>>>>>> 6674c8e (project)
 
 # Installation
 MERN Chat App RSA Encryption application requires [Node.js](https://nodejs.org/) to run.
 
-<<<<<<< HEAD
 ## Deployment
 - GitHub deployment guide: [DEPLOY_GITHUB.md](./DEPLOY_GITHUB.md)
 
-=======
->>>>>>> 6674c8e (project)
 ### Clone the repositories
 ```sh
 $ git clone https://github.com/catalyn98/MERN-Chat-App-RSA-Encryption.git
@@ -38,15 +27,9 @@ $ git clone https://github.com/catalyn98/MERN-Chat-App-RSA-Encryption.git
 
 ### Set environment variables 
 To set up your project, follow these steps:
-<<<<<<< HEAD
 1. Create a *.env* file in the project root (copy from *.env.example*).
 2. **Configure Firebase:** See [FIREBASE_SETUP.md](./FIREBASE_SETUP.md) for detailed steps to get your Firebase credentials.
 3. Set `JWT_SECRET` for authentication.
-=======
-1. Create a *.env* file in the following directories: the *backend api* folder, the *frontend-user* folder, and the *frontend-admin* folder, this file will store your environment variables.
-2. Create a MongoDB database and obtain the connection string provided by MongoDB for connecting to your database.
-3. Create a Firebase project and obtain the Firebase connection string.
->>>>>>> 6674c8e (project)
 
 ### Install the dependencies:
 Start the server:

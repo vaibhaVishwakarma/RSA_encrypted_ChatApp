@@ -12,7 +12,6 @@ export const SocketContextProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
   const { authUser } = useAuthContext();
-<<<<<<< HEAD
   const socketUrl = import.meta.env.DEV
     ? "http://localhost:5000"
     : import.meta.env.VITE_SOCKET_URL || import.meta.env.VITE_API_URL || window.location.origin;
@@ -21,12 +20,6 @@ export const SocketContextProvider = ({ children }) => {
     if (authUser) {
       const socket = io(socketUrl, {
         withCredentials: true,
-=======
-
-  useEffect(() => {
-    if (authUser) {
-      const socket = io("https://mern-chat-app-rsa-encryption.onrender.com", {
->>>>>>> 6674c8e (project)
         query: {
           userId: authUser._id,
         },
@@ -42,11 +35,7 @@ export const SocketContextProvider = ({ children }) => {
         setSocket(null);
       }
     }
-<<<<<<< HEAD
   }, [authUser, socketUrl]);
-=======
-  }, [authUser]);
->>>>>>> 6674c8e (project)
 
   return (
     <SocketContext.Provider value={{ socket, onlineUsers }}>
