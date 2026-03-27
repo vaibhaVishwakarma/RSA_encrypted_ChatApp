@@ -22,8 +22,8 @@ const SignUp = () => {
 
   return (
     <div className="flex flex-col items-center justify-center w-full max-w-md min-w-0 px-4 mx-auto">
-      <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
-        <h1 className="text-3xl font-semibold text-center">
+      <div className="w-full p-7 rounded-2xl glass-panel">
+        <h1 className="text-3xl font-semibold text-center text-slate-800">
           Sign Up{" "}
           <span className="text-accent">
             ChatApp{" "}
@@ -106,8 +106,8 @@ const SignUp = () => {
           >
             Already have an account?
           </Link>
-          <div className="centerMyButton">
-            <button className="btn btn-sm mt-2 textColor" disabled={loading}>
+          <div className="centerMyButton mt-2">
+            <button className="btn btn-sm mt-2 primary-btn rounded-xl px-6" disabled={loading}>
               {loading ? (
                 <span className="loading loading-spinner"></span>
               ) : (
@@ -115,7 +115,9 @@ const SignUp = () => {
               )}
             </button>
           </div>
-	  <p>Chat End-to-End Encrypted. Powered by RSA-2048</p>
+          <p className="text-center text-sm text-muted mt-4">
+            Chat end-to-end encrypted. Powered by RSA-2048.
+          </p>
         </form>
       </div>
     </div>

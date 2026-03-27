@@ -47,7 +47,7 @@ const MessageInput = () => {
       <div className="w-full relative">
         <textarea
           ref={textareaRef}
-          className="border text-sm rounded-lg block w-full p-2.5 pr-12 bg-gray-700 border-gray-600 text-white"
+          className="text-sm rounded-xl block w-full p-3 pr-12 light-input"
           placeholder="Send a message"
           value={message}
           onChange={handleInput}
